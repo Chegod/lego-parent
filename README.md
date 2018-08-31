@@ -18,9 +18,8 @@
 ## 商城入口
 
 用Nginx作为商城的入口。因为一个ip可以绑定多个域名,所以我们只去访问 Nginx 就行了，Nginx 通过域名区分要访问哪一个web应用,然后将请求转发到对应的 Tomcat上。
-* 域名规划
-* nginx配置文件
-
+* [域名规划](https://github.com/Chegod/lego-parent/blob/master/otherResources/nginx.conf)
+* [nginx配置文件](https://github.com/Chegod/lego-parent/blob/master/otherResources/%E4%B9%90%E8%B4%AD%E5%95%86%E5%9F%8Ehosts%E6%96%87%E4%BB%B6.txt)
 
 ## 后台管理系统
 
