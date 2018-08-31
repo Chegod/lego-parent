@@ -1,0 +1,33 @@
+def libs = rootProject.ext.libraries
+dependencies {
+    compile project(':lego-manager:lego-manager-pojo')
+    compile(
+            //数据库连接
+            libs["mysql-connector-java"],
+            libs["druid"],
+            //mybatis
+            libs["ant"],
+            libs["ant-launcher"],
+            libs["asm"],
+            libs["cglib"],
+            libs["javassist"],
+            libs["mybatis"],
+            libs["mybatis-spring"],
+            libs["ognl"],
+            //mybatis分页插件
+            libs["pagehelper" ],
+    )
+}
+//SourceSets可用于指定不同的项目结构。
+/*
+默认会把src/main/resources下的所有配置文件以及src/main/java下的所有java文件打包或发布到target\classes下面，
+但是如果在src/main/java下面也放置一些配置文件,这些配置文件是被忽略的.
+*/
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java' //将java目录也设置为资源目录
+            srcDir 'src/main/resources' //资源目录
+        }
+    }
+}

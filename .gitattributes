@@ -1,0 +1,5 @@
+#意思就是将.js、css、html当作Scala语言来统计。简单粗暴。效果如下：
+*.js linguist-language=Java
+*.css linguist-language=Java
+*.html linguist-language=Java
+

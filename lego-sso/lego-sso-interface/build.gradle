@@ -1,0 +1,3 @@
+dependencies {
+    compile project(':lego-manager:lego-manager-pojo')
+}

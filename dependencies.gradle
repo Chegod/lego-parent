@@ -1,0 +1,214 @@
+ext {
+    versions = [
+            //时间操作组件
+            joda_time_version               : '2.9.9',
+            //Apache工具组件
+            commons_lang3_version           : '3.7',
+            commons_io_version              : '2.6',
+            commons_fileupload_version      : '1.3.3',
+            commons_net_version             : '3.6',
+            //httpclient
+            httpclient_version              : '4.5.5',
+            //quartz任务调度框架
+            quartz_version                  : '2.3.0',
+            //mybatis分页插件
+            pagehelper_version              : '5.1.4',
+            //JSP相关
+            servlet_api_version             : '4.0.0',
+            jsp_api_version                 : '2.3.1',
+            jstl_version                    : '1.2',
+            standard_version                : '1.1.2',
+            taglibs_standard_impl_version   : '1.2.5',
+            taglibs_standard_spec_version   : '1.2.5',
+            taglibs_standard_compat_version : '1.2.5',
+            //日志
+            logback_ext_spring_version      : '0.1.5',//logback整合springMVC
+            commons_logging_version         : '1.2',//mybatis
+            logback_classic_version         : '1.2.3',
+            logback_core_version            : '1.2.3',
+            logback_access_version          : '1.2.3',
+            slf4j_api_version               : '1.7.25',//mybatis
+            slf4j_jcl_version               : '1.7.25',
+            slf4j_log4j12_version           : '1.7.25',//mybatis
+            jcl_over_slf4j_version          : '1.7.25',
+            log4j_version                   : '1.2.17',//mybatis
+            log4j_over_slf4j_version        : '1.7.25',
+            log4j_core_version              : '2.11.0',//mybatis
+            log4j_api_version               : '2.11.0',//mybatis
+            //测试单元
+            junit_version                   : '4.12',
+            //数据库连接
+            mysql_connector_java_version    : '5.1.46',
+            commons_dbcp2_version           : '2.2.0',
+            commons_pool2_version           : '2.5.0',
+            druid_version                   : '1.1.9',//Druid是Java语言中最好的数据库连接池
+            //redis连接
+            jedis_version                   : '2.9.0',
+            //使用SolrJ可以实现索引库的增删改查
+            solr_solrj_version              : '7.3.0',
+            //ActiveMQ消息队列
+            activemq_all_version            : '5.15.3',
+            activemq_core_version           : '5.7.0',
+            activemq_broker_version         : '5.15.3',
+            activemq_client_version         : '5.15.3',
+            activemq_pool_version           : '5.15.3',
+            activemq_camel_version          : '5.15.3',
+            activemq_kahadb_store_version   : '5.15.3',
+            artemis_jms_client_version      : '2.5.0',
+            javax_jms_api_version           : '2.0.1',
+            //在项目中主要使用Jackson进行JSON和Java对象转换
+            jackson_databind_version        : '2.9.5',
+            jackson_core_version            : '2.9.5',
+            //dubbo资源调度和治理中心的管理工具
+            dubbo_version                   : '2.6.1',
+            zookeeper_version               : '3.4.10',
+            zkclient_version                : '0.1',
+            curator_framework_version       : '1.1.10',
+            apache_curator_recipes_version  : '2.7.1',
+            apache_curator_framework_version: '2.7.1',
+            apache_curator_client_version   : '2.7.1',
+            //spring
+            spring_version                  : '5.0.5.RELEASE',
+            aopalliance_version             : '1.0',
+            aspectjweaver_version           : '1.9.0',
+            security_version                : '3.2.5.RELEASE',
+            jsr250_api_version              : '1.0',
+            //mybatis
+            ant_version                     : '1.9.6',
+            ant_launcher_version            : '1.9.6',
+            asm_version                     : '5.2',
+            cglib_version                   : '3.2.5',
+            javassist_version               : '3.22.0-GA',
+            mybatis_version                 : '3.4.6',
+            mybatis_spring_version          : '1.3.2',
+            ognl_version                    : '3.1.16',
+    ]
+
+    def ver = rootProject.ext.versions
+    libraries = [
+            //时间操作组件
+            "joda-time"               : "joda-time:joda-time:${ver.joda_time_version}",
+            //Apache工具组件
+            "commons-lang3"           : "org.apache.commons:commons-lang3:${ver.commons_lang3_version}",
+            "commons-io"              : "commons-io:commons-io:${ver.commons_io_version}",
+            "commons-fileupload"      : "commons-fileupload:commons-fileupload:${ver.commons_fileupload_version}",
+            "commons-net"             : "commons-net:commons-net:${ver.commons_net_version}",
+            //httpclient
+            "httpclient"              : "org.apache.httpcomponents:httpclient:${ver.httpclient_version}",
+            //quartz任务调度框架
+            "quartz"                  : "org.quartz-scheduler:quartz:${ver.quartz_version}",
+            //mybatis分页插件
+            "pagehelper"              : "com.github.pagehelper:pagehelper:${ver.pagehelper_version}",
+
+            //JSP相关
+            "servlet-api"             : "javax.servlet:javax.servlet-api:${ver.servlet_api_version}",
+            "jsp-api"                 : "javax.servlet.jsp:javax.servlet.jsp-api:${ver.jsp_api_version}",
+            //JSP标准标签库，可以嵌入在jsp页面中使用标签的形式完成业务逻辑等功能.
+            "jstl"                    : "javax.servlet:jstl:${ver.jstl_version}",
+            "standard"                : "taglibs:standard:${ver.standard_version}",
+            //一般只需要taglibs-standard-impl和taglibs-standard-spec 两个jar包，taglibs-standard-compat估计应该是兼容以前版本标签库
+            "taglibs-standard-impl"   : "org.apache.taglibs:taglibs-standard-impl:${ver.taglibs_standard_impl_version}",
+            "taglibs-standard-spec"   : "org.apache.taglibs:taglibs-standard-spec:${ver.taglibs_standard_spec_version}",
+            "taglibs-standard-compat" : "org.apache.taglibs:taglibs-standard-compat:${ver.taglibs_standard_compat_version}",
+
+            // 日志
+            //logback整合springMVC
+            "logback-ext-spring"      : "org.logback-extensions:logback-ext-spring:${ver.logback_ext_spring_version}",
+
+            "commons-logging"         : "commons-logging:commons-logging:${ver.commons_logging_version}",
+            "logback-classic"         : "ch.qos.logback:logback-classic:${ver.logback_classic_version}",
+            "logback-core"            : "ch.qos.logback:logback-core:${ver.logback_core_version}",
+            "logback-access"          : "ch.qos.logback:logback-access:${ver.logback_access_version}",
+
+            "slf4j-api"               : "org.slf4j:slf4j-api:${ver.slf4j_api_version}",
+            //slf4j切换到log4j1
+            "slf4j-log4j12"           : "org.slf4j:slf4j-log4j12:${ver.slf4j_log4j12_version}",
+            //slf4j切换到commons-logging
+            "slf4j-jcl"               : "org.slf4j:slf4j-jcl: ${ver.slf4j_jcl_version}",
+            // commons-logging切换到slf4j
+            "jcl-over-slf4j"          : "org.slf4j:jcl-over-slf4j:${ver.jcl_over_slf4j_version}",
+            // log4j1切换到slf4j
+            "log4j-over-slf4j"        : "org.slf4j:log4j-over-slf4j:${ver.log4j_over_slf4j_version}",
+            "log4j"                   : "log4j:log4j:${ver.log4j_version}",
+            "log4j-core"              : "org.apache.logging.log4j:log4j-core:${ver.log4j_core_version}",
+            "log4j-api"               : "org.apache.logging.log4j:log4j-api:${ver.log4j_api_version}",
+
+            //测试单元
+            "junit"                   : "junit:junit:${ver.junit_version}",
+
+            //数据库连接
+            "mysql-connector-java"    : "mysql:mysql-connector-java:${ver.mysql_connector_java_version}",
+            "commons-dbcp2"           : "org.apache.commons:commons-dbcp2: ${ver.commons_dbcp2_version}",
+            "commons-pool2"           : "org.apache.commons:commons-pool2:${ver.commons_pool2_version}",
+            "druid"                   : "com.alibaba:druid:${ver.druid_version}",
+
+            //redis连接,JedisPool需要commons-pool2
+            "jedis"                   : "redis.clients:jedis:${ver.jedis_version}",
+
+            //使用SolrJ可以实现索引库的增删改查
+            "solr-solrj"              : "org.apache.solr:solr-solrj:${ver.solr_solrj_version}",
+
+            //ActiveMQ消息队列,"activemq-all"会发生冲突,可用"activemq-core"和"activemq-pool"
+            "activemq-core"           : "org.apache.activemq:activemq-core:${ver.activemq_core_version}",
+            "activemq-pool"           : "org.apache.activemq:activemq-pool:${ver.activemq_pool_version}",
+            "activemq-all"            : "org.apache.activemq:activemq-all:${ver.activemq_all_version}",
+            "activemq-broker"         : "org.apache.activemq:activemq-broker:${ver.activemq_broker_version}",
+            "activemq-client"         : "org.apache.activemq:activemq-client:${ver.activemq_client_version}",
+            "artemis-jms-client"      : "org.apache.activemq:artemis-jms-client:${ver.artemis_jms_client_version}",
+            "activemq-camel"          : "org.apache.activemq:activemq-camel:${ver.activemq_camel_version}",
+            "activemq-kahadb-store"   : "org.apache.activemq:activemq-kahadb-store:${ver.activemq_kahadb_store_version}",
+            //5.0.4的spring需要使用JMS 2.0版本，而5.7.0activemq-core会导入JMS 1.1的依赖,
+            "javax.jms-api"           : "javax.jms:javax.jms-api:${ver.javax_jms_api_version}",
+
+            // Jackson Json处理工具包
+            "jackson-databind"        : "com.fasterxml.jackson.core:jackson-databind:${ver.jackson_databind_version}",
+            "jackson-core"            : "com.fasterxml.jackson.core:jackson-core:${ver.jackson_core_version}",
+
+            //dubbo资源调度和治理中心的管理工具
+            "dubbo"                   : "com.alibaba:dubbo:${ver.dubbo_version}",
+            "zookeeper"               : "org.apache.zookeeper:zookeeper:${ver.zookeeper_version}",
+            "zkclient"                : "com.github.sgroschupf:zkclient:${ver.zkclient_version}",
+            "curator-framework"       : "com.netflix.curator:curator-framework:${ver.curator_framework_version}",
+            "apache-curator-recipes"  : "org.apache.curator:curator-recipes:${ver.apache_curator_recipes_version}",
+            "apache-curator-framework": "org.apache.curator:curator-framework:${ver.apache_curator_framework_version}",
+            "apache-curator-client"   : "org.apache.curator:curator-client:${ver.apache_curator_client_version}",
+
+            //spring
+            "spring-beans"            : "org.springframework:spring-beans:${ver.spring_version}",
+            "spring-context"          : "org.springframework:spring-context:${ver.spring_version}",
+            "spring-core"             : "org.springframework:spring-core:${ver.spring_version}",
+            "spring-expression"       : "org.springframework:spring-expression: ${ver.spring_version}",
+            "spring-web"              : "org.springframework:spring-web:${ver.spring_version}",
+            "spring-aop"              : "org.springframework:spring-aop:${ver.spring_version}",
+            "spring-aspects"          : "org.springframework:spring-aspects:${ver.spring_version}",
+            "aopalliance"             : "aopalliance:aopalliance:${ver.aopalliance_version}",
+            "aspectjweaver"           : "org.aspectj:aspectjweaver: ${ver.aspectjweaver_version}",
+            "spring-jdbc"             : "org.springframework:spring-jdbc:${ver.spring_version}",
+            "spring-tx"               : "org.springframework:spring-tx:${ver.spring_version}",
+            //ActiveMQ与Spring整合:spring-jms和spring-context-support
+            "spring-context-support"  : "org.springframework:spring-context-support:${ver.spring_version}",
+            "spring-jms"              : "org.springframework:spring-jms:${ver.spring_version}",
+            "spring-orm"              : "org.springframework:spring-orm:${ver.spring_version}",
+            "spring-oxm"              : "org.springframework:spring-oxm:${ver.spring_version}",
+            "spring-webmvc"           : "org.springframework:spring-webmvc:${ver.spring_version}",
+            "spring-websocket"        : "org.springframework:spring-websocket:${ver.spring_version}",
+            "spring-messaging"        : "org.springframework:spring-messaging:${ver.spring_version}",
+            "spring-test"             : "org.springframework:spring-test:${ver.spring_version}",
+            "javax.annotation"        : "javax.annotation:jsr250-api:${ver.jsr250_api_version}",
+            // Spring Security
+            "spring-security-core"    : "org.springframework.security:spring-security-core:${ver.security_version}",
+            "spring-security-web"     : "org.springframework.security:spring-security-web:${ver.security_version}",
+            "spring-security-config"  : "org.springframework.security:spring-security-config:${ver.security_version}",
+            "spring-security-taglibs" : "org.springframework.security:spring-security-taglibs:${ver.security_version}",
+
+            //mybatis
+            "ant"                     : "org.apache.ant:ant:${ver.ant_version}",
+            "ant-launcher"            : "org.apache.ant:ant-launcher:${ver.ant_launcher_version}",
+            "asm"                     : "org.ow2.asm:asm: ${ver.asm_version}",
+            "cglib"                   : "cglib:cglib:${ver.cglib_version}",
+            "javassist"               : "org.javassist:javassist:${ver.javassist_version}",
+            "mybatis"                 : "org.mybatis:mybatis:${ver.mybatis_version}",
+            "mybatis-spring"          : "org.mybatis:mybatis-spring:${ver.mybatis_spring_version}",
+            "ognl"                    : "ognl:ognl:${ver.ognl_version}",
+    ]
+}

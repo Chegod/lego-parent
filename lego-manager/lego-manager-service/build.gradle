@@ -1,0 +1,56 @@
+apply plugin: 'war'
+def libs = rootProject.ext.libraries
+dependencies {
+    compile(
+            project(':lego-manager:lego-manager-interface'),
+            project(':lego-manager:lego-manager-dao'),
+            //redis连接,JedisPool需要commons-pool2
+            libs["jedis"],
+            libs["commons-pool2"],
+            //ActiveMQ消息队列
+            libs["activemq-core"],
+            libs["activemq-pool"],
+            libs["javax.jms-api"],
+            //spring
+            //ActiveMQ与Spring整合:spring-jms和spring-context-support
+            libs["spring-context-support"],
+            libs["spring-jms"],
+            libs["spring-beans"],
+            libs["spring-context"],
+            libs["spring-core"],
+            libs["spring-expression"],
+            libs["spring-web"],
+            libs["spring-aop"],
+            libs["spring-aspects"],
+            libs["aopalliance"],
+            libs["aspectjweaver"],
+            libs["spring-jdbc"],
+            libs["spring-tx"],
+            libs["spring-orm"],
+            libs["spring-oxm"],
+            libs["spring-webmvc"],
+            libs["spring-websocket"],
+            libs["spring-messaging"],
+            libs["spring-test"],
+            //dubbo资源调度和治理中心的管理工具
+            libs["dubbo"],
+            libs["zookeeper"],
+            libs["zkclient"],
+            libs["apache-curator-recipes"],
+            libs["apache-curator-framework"],
+            libs["apache-curator-client"],
+    )
+}
+/*tomcat {
+    httpPort = 8091
+    ajpPort=8021
+    //stopPort=8091
+    //httpsPort = 8443
+    //enableSSL = true
+    //contextPath默认为项目名
+    contextPath = '/'
+    // httpProtocol：要使用的HTTP协议处理程序类名称
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    //ajpProtocol：要使用的AJP协议处理程序类名称
+    ajpProtocol = 'org.apache.coyote.ajp.AjpNio2Protocol'
+}*/

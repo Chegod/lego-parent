@@ -1,0 +1,37 @@
+def libs = rootProject.ext.libraries
+dependencies {
+    compileOnly(
+            //JSP相关
+            libs["servlet-api"],
+            libs["jsp-api"],
+    )
+    compile(
+/*日志处理
+slf4j ：如jdbc一样，定义了一套接口，是一个日志门面，可实现多个日志系统间快速切换
+logback ：和log4j是同一作者，是log4j的升级版
+logback主要分为三个模块，分别是：logback-core,logback-classic,logback-access*/
+            libs["slf4j-api"],
+            libs["jcl-over-slf4j"],//commons-logging切换到slf4j
+            libs["log4j-over-slf4j"],//log4j1切换到slf4j
+            libs["logback-core"],//提供基础功能，是其他两个模块的基础
+            libs["logback-classic"],//log4j的升级，实现了self4j api
+            libs["logback-access"],//用于与sevlet容器进行集成、提供网络访问日志的功能
+            //Jackson Json处理工具包
+            libs["jackson-databind"],
+            libs["jackson-core"],
+            //时间操作组件
+            libs["joda-time"],
+            //Apache工具组件
+            libs["commons-lang3"],
+            libs["commons-io"],
+            libs["commons-net"],
+            //quartz任务调度框架
+            libs["quartz"],
+            libs["httpclient"],
+            //应用JedisPool资源池管理jedis,需要引入两个包
+            libs["jedis"],
+            libs["commons-pool2"],
+            //compile fileTree(dir:'../libs',include:['fastdfs-client-java-1.27-SNAPSHOT.jar'])
+            fileTree(dir: "${rootProject.projectDir}/libs", include: '*.jar')
+    )
+}

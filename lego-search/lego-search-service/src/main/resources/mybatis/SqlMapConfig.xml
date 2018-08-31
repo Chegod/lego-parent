@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!--分页插件-->
+	<plugins>
+		<!-- com.github.pagehelper为PageHelper类所在包名 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库-->
+			<!--PageHelper插件4.0.0以后的版本支持自动识别使用的数据库-->
+			<!--<property name="dialect" value="mysql"/>-->
+		</plugin>
+	</plugins>
+
+	<!-- 使用resource属性加载外部配置文件 -->
+	<!-- <properties resource="DateSource.properties">
+		在properties内部用property定义属性,如果外部配置文件有该属性,则内部定义属性被外部属性覆盖
+		<property name="jdbc.username" value="root123" />
+		<property name="jdbc.password" value="root123" />
+	</properties> -->
+	
+	<!-- 如果用逆向工程生成的Mapper.xml文件中是类的全名,所以可以不用配置别名 -->
+		<!-- 为一个类取一个别名 -->
+		<!-- <typeAlias alias="category" type="pers.eooy.pojo.Category" /> -->
+		<!-- 为pojo包及其子包下的每一个类取一个别名 ,别名就是不区分大小写的类名 -->
+	<!--<typeAliases>
+		<package name="cn.legomall.pojo" />
+	</typeAliases>-->
+
+	<!--注册指定包下的所有接口,这样mybatis会为mapper包下的所有接口创建代理对象,之后将代理对象交由spring容器创建.-->
+	<!--<mappers> 
+		<package name="pers.eooy.mapper" /> 
+	</mappers> -->
+</configuration>

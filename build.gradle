@@ -1,0 +1,95 @@
+// 这个文件中定义的jar包可以直接在子项目中使用，不需要再次使用 apply from 这个语句
+apply from: 'dependencies.gradle'
+def libs = rootProject.ext.libraries
+//配置当前模块以及所有子模块行为
+allprojects {
+    //所有模块都采用统一的版本号以及groupName
+    group = "${group}"
+    version = "${version}"
+
+    repositories {
+        //jcenter()
+        mavenCentral()
+    }
+}
+
+//配置所有子模块行为
+subprojects {
+    //应用插件,这里引入了Gradle的Java插件,此插件提供了Java构建和测试所需的一切。
+    apply plugin: 'java'
+    sourceCompatibility = "${sourceCompatibilityVersion}"
+
+    dependencies {
+        compile(
+                /*日志处理
+                slf4j ：如jdbc一样，定义了一套接口，是一个日志门面，可实现多个日志系统间快速切换
+                logback ：和log4j是同一作者，是log4j的升级版
+                logback主要分为三个模块，分别是：logback-core,logback-classic,logback-access*/
+                libs["slf4j-api"],
+                libs["jcl-over-slf4j"],//commons-logging切换到slf4j
+                libs["log4j-over-slf4j"],//log4j1切换到slf4j
+                libs["logback-core"],//提供基础功能，是其他两个模块的基础
+                libs["logback-classic"],//log4j的升级，实现了self4j api
+                libs["logback-access"],//用于与sevlet容器进行集成、提供网络访问日志的功能
+                //libs["logback-ext-spring"],//logback整合springMVC，暂时没用
+        )
+        //测试单元
+        testImplementation(
+                libs["junit"],
+                libs["spring-test"],
+        )
+    }
+    //解决警告：编码 GBK 的不可映射字符
+    /* tasks.withType(JavaCompile) {
+         options.encoding = "UTF-8"
+     }*/
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    //在整个构建过程中排除org.slf4j:slf4j-log4j12和log4j:log4j
+    configurations {
+        //编译期排除ssm-common模块
+        //compile.exclude module: 'ssm-common'
+        all*.exclude group: 'commons-logging', module: 'commons-logging'
+        all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+        all*.exclude group: "log4j", module: "log4j"
+        //5.0.4的spring需要使用JMS 2.0版本，而5.7.0的activemq-core会导入JMS 1.1的依赖,
+        all*.exclude group: "org.apache.geronimo.specs", module: "geronimo-jms_1.1_spec"
+    }
+}
+
+/*
+运行gradle wrapper,就会在根项目目录下创建一个wrapper文件夹,会包含wrapper的Jar包和properties文件.
+之后就可以使用gradlew来运行task.第一次使用gradlew执行task的时候,会在项目根目录下的gradle/dists下下载你指定的Gradle版本.
+*/
+/*
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0'
+    //archiveBase = 'PROJECT'
+    //archivePath = 'gradle/dists'
+}
+*/
+
+//为部分子模块配置Tomcat插件
+/*buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+    }
+}
+configure(subprojects.findAll { it.name == 'lego-manager-web'|| it.name == 'lego-manager'}) {
+    apply plugin: 'com.bmuschko.tomcat'
+    apply plugin: 'com.bmuschko.tomcat-base'
+    dependencies {
+        def tomcatVersion = '9.0.1'
+        tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+                "org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6",
+                "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+    }
+}*/
+//配置指定子模块行为
+/*
+project(':lego-manager-web') {
+}
+*/

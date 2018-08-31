@@ -1,0 +1,10 @@
+127.0.0.1 manager.legomall.cn
+127.0.0.1 www.legomall.cn
+127.0.0.1 search.legomall.cn
+127.0.0.1 item.legomall.cn
+127.0.0.1 sso.legomall.cn
+127.0.0.1 cart.legomall.cn
+127.0.0.1 order.legomall.cn
+
+
+

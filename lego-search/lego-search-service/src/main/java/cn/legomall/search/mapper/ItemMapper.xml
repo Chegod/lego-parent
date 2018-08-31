@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace：命名空间，用于隔离sql -->
+<!-- 1. namespace必须和Mapper接口类路径一致 -->
+<mapper namespace="cn.legomall.search.mapper.ItemMapper">
+    <!-- 2. id必须和Mapper接口方法名一致 -->
+    <!-- 3. parameterType必须和接口方法参数类型一致 -->
+    <!-- 4. resultType必须和接口方法返回值类型一致 -->
+    <select id="getSearchItemList" resultType="cn.legomall.common.pojo.SearchItem">
+        <!--商品状态，1-正常，2-下架，3-删除-->
+        SELECT
+        a.id,
+        a.title,
+        a.sell_point,
+        a.price,
+        a.image,
+        b.`name` category_name
+        FROM
+        tb_item a
+        LEFT JOIN tb_item_cat b ON a.cid = b.id
+        WHERE
+        a.`status` = 1;
+    </select>
+
+    <select id="getSearchItemById" parameterType="Long" resultType="cn.legomall.common.pojo.SearchItem">
+        SELECT
+	    a.id,
+	    a.title,
+	    a.sell_point,
+	    a.price,
+	    a.image,
+	    b.`name` category_name
+        FROM
+	    tb_item a
+	    LEFT JOIN tb_item_cat b ON a.cid = b.id
+        WHERE
+	    a.`status` = 1
+	    AND a.id = #{itemId};
+    </select>
+</mapper>
