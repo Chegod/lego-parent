@@ -1,20 +1,23 @@
 # lego-parent
 
-从网上找资料做了一个商城项目，放在这里用来学习和测试使用。
+从网上找资料做了一个商城项目，使用 Gradle 管理工程，SSM 框架进行开发，mysql 5.7作为数据库。
 
-## 项目介绍
-
-### 商城架构
+## 商城架构
 
 采用 SOA (面向服务的分布式架构)，也就是把工程拆分成服务层、表现层两个工程。服务层中包含业务逻辑，只需要对外提供服务即可。
 表现层只需要处理和页面的交互，业务逻辑都是调用服务层的服务来实现，在这里通过 Dubbo 实现远程调用服务。
 
-### 开发环境
+### Dubbo介绍
 
-* 使用 Gradle 管理工程
-* 使用 SSM 框架进行开发
-* 使用 mysql5.7 作为数据库
+<div align=center><img width="530" height="417" src="http://dubbo.apache.org/img/architecture.png"/></div>
 
+|节点|节点|
+|:---|:---|
+|Provider|暴露服务的服务提供方|
+|Consumer|调用远程服务的服务消费方|
+|Registry|服务注册与发现的注册中心，使用zookeeper作为注册中心|
+|Monitor|统计服务的调用次数和调用时间的监控中心，[Dubbokeeper作为监控中心](http://118.24.93.102:8070/dubbokeeper/)|
+|Container|服务运行容器|
 ## 商城入口
 
 用Nginx作为商城的入口。因为一个ip可以绑定多个域名,所以我们只去访问 Nginx 就行了，Nginx 通过域名区分要访问哪一个web应用,然后将请求转发到对应的 Tomcat上。
