@@ -9,7 +9,7 @@
 
 ### Dubbo介绍
 
-<div align=center><img width="530" height="417" src="http://dubbo.apache.org/img/architecture.png"/></div>
+<div align=center><img width="530" height="417" src="https://github.com/chegod/lego-parent/blob/master/otherResources/dubbo%E6%9E%B6%E6%9E%84.png"/></div>
 
 |节点|角色说明|
 |:---|:---|
