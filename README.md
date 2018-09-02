@@ -11,7 +11,7 @@
 
 <div align=center><img width="530" height="417" src="http://dubbo.apache.org/img/architecture.png"/></div>
 
-|节点|节点|
+|节点|角色说明|
 |:---|:---|
 |Provider|暴露服务的服务提供方|
 |Consumer|调用远程服务的服务消费方|
